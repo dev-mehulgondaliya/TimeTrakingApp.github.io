@@ -26,7 +26,7 @@
 
 <h3>Navigate to the Project Directory</h3>
 
-<pre><code>cd TimeTrakingApp</code></pre>
+<pre><code>cd TimeTrakingApp.github.io</code></pre>
 
 <h3>Install Dependencies</h3>
 
