@@ -5,7 +5,7 @@
 
 <h2>Demo Link</h2>
 <p>deploy on netlify</p>
-<a target="_blank" href="https://65af8176ba9004be22b4f416--effervescent-choux-ee3b1f.netlify.app/">Demo</a>
+<a target="_blank" href="https://effervescent-choux-ee3b1f.netlify.app/">Demo</a>
 
 <h2>Getting Started</h2>
 
