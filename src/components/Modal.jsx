@@ -1,23 +1,16 @@
 // Modal.js
 import React, { useState } from 'react';
 
-const Modal = ({ onSave,time, onClose, EditData, updateDataIndex }) => {
+const Modal = ({ onSave, onClose, EditData, updateDataIndex }) => {
   const [title, setTitle] = useState(EditData ? EditData.title : '');
   const [description, setDescription] = useState(EditData ? EditData.description : '');
 
-  const formatTime = (milliseconds) => {
-    const date = new Date(milliseconds);
-    const hours = date.getUTCHours().toString().padStart(2, '0');
-    const minutes = date.getUTCMinutes().toString().padStart(2, '0');
-    const seconds = date.getUTCSeconds().toString().padStart(2, '0');
-    return `${hours}:${minutes}:${seconds}`;
-  };
+
   // for save button click event handle
   const handleSave = () => {
-    const currentTime = formatTime(time);
     if (title.trim() && description.trim()) {
 
-      onSave(title, description,currentTime);
+      onSave(title, description);
       setTitle('');
       setDescription('');
     }

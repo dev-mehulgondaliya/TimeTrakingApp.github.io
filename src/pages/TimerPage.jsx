@@ -9,6 +9,7 @@ function TimerPage() {
   const [savedTask, setSavedTask] = useState([]);
   const [updateDataIndex, setUpdateDataIndex] = useState(null)
   const [EditData, setEditData] = useState(null);
+  const [currentTime, setCurrentTime] = useState(null)
 
   // for getting data frmo localstorage
   useEffect(() => {
@@ -56,6 +57,8 @@ function TimerPage() {
   // for save data to localstorage
   const saveTime = () => {
     setShowModal(true);
+    const currentTime = formatTime(time);
+    setCurrentTime(currentTime)
   };
 
   // for closing modal
@@ -91,7 +94,7 @@ function TimerPage() {
   };
 
   // for data save of modal (this funtion use for both edit and save)
-  const handleSave = (title, description, currentTime) => {
+  const handleSave = (title, description) => {
     if (updateDataIndex != null) {
       const updatedTaskList = [...savedTask];
       updatedTaskList.splice(updateDataIndex, 1, { title, description, time: savedTask[updateDataIndex].time });
