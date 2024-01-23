@@ -91,7 +91,7 @@ function TimerPage() {
   };
 
   // for data save of modal (this funtion use for both edit and save)
-  const handleSave = (title, description) => {
+  const handleSave = (title, description, currentTime) => {
     if (updateDataIndex != null) {
       const updatedTaskList = [...savedTask];
       updatedTaskList.splice(updateDataIndex, 1, { title, description, time: savedTask[updateDataIndex].time });
@@ -101,7 +101,7 @@ function TimerPage() {
       setEditData(null)
       setShowModal(false);
     } else {
-      const currentTime = formatTime(time);
+
       const newTimeEntry = { title, description, time: currentTime };
       setSavedTask((prevTimes) => [...prevTimes, newTimeEntry]);
       localStorage.setItem('savedTask', JSON.stringify([...savedTask, newTimeEntry]));
@@ -115,12 +115,12 @@ function TimerPage() {
       <h1 className='text-2xl text-purple-500'>Time Tracking App</h1>
       <p className='text-7xl font-bold '>{formatTime(time)}</p>
       <div className='flex gap-5 justify-center'>
-        <button className='bg-blend-darken' onClick={toggleTimer}>{isRunning ? 'Pause' : 'Play'}</button>
+        <button className='bg-blend-darken' onClick={toggleTimer}>{isRunning ? 'Pause' : 'Start'}</button>
         <button className='bg-blend-darken' onClick={resetTimer}>Reset</button>
         <button className='bg-blend-darken' onClick={saveTime}>Save</button>
         <button className='bg-blend-darken' onClick={clearList}>Clear List</button>
       </div>
-      {showModal && <Modal onSave={handleSave} onClose={closeModal} EditData={EditData} updateDataIndex={updateDataIndex} />}
+      {showModal && <Modal onSave={handleSave} time={time} onClose={closeModal} EditData={EditData} updateDataIndex={updateDataIndex} />}
       <TaskListPage savedTask={savedTask} handleEdit={handleEdit} handleDelete={handleDelete} />
     </div>
   );
